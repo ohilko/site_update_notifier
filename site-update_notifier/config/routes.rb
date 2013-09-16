@@ -4,5 +4,8 @@ SiteUpdateNotifier::Application.routes.draw do
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match "/logout", to: "sessions#destroy", :as => "logout", via: [:get, :post]
   resources :identities
+  resources :microposts
+  resources :users
+
 end
 

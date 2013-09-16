@@ -13,6 +13,16 @@
     <%= current_user.uid %>
   </p>
   <p><%= link_to "Log out", logout_path %></p>
+
+  <div class="span8">
+    <% if @user.resources.any? %>
+      <h3>Resources (<%= @user.resources.count %>)</h3>
+      <ol class="resources">
+        <%= render @resources %>
+      </ol>
+      <%= will_paginate @resources %>
+    <% end %>
+  </div>
 <% else %>
   <h1>Sign In</h1>
 
