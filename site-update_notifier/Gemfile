@@ -32,9 +32,9 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'omniauth-twitter'
+gem 'rspec-rails'
 
-gem 'omniauth-facebook'
+gem 'capybara'
 
 gem 'omniauth-google-oauth2'
 

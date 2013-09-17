@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20130916050755) do
     t.datetime "updated_at"
   end
 
+  add_index "resources", ["user_id", "created_at"], name: "index_resources_on_user_id_and_created_at"
+
   create_table "users", force: true do |t|
     t.string   "provider"
     t.string   "uid"

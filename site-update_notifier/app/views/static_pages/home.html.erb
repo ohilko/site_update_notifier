@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Site update notifier | Home</title>
+  </head>
+  <body>
+    <h1>Site update notifier</h1>
+      <% if current_user %>
+        <h1>User Profile</h1>
+        <p>
+          <strong>Name:</strong>
+          <%= current_user.name %>
+        </p>
+        <p>
+          <strong>Provider:</strong>
+          <%= current_user.provider %>
+        </p>
+        <p>
+          <strong>OmniAuth UID:</strong>
+          <%= current_user.uid %>
+        </p>
+        <p><%= link_to "Log out", logout_path %></p>
+      <% else %>
+        <a href="sessions/new" class="auth_provider"> NEW USER </a>
+      <% end %>
+  </body>
+</html>
