@@ -12,5 +12,3 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     IdentitiesController.action(:new).call(env)
   }
 end
-
-# OmniAuth.config.on_failure = UsersController.action(:oauth_failure)

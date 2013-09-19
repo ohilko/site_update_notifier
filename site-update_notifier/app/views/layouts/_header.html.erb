@@ -1,0 +1,15 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <% flash.each do |name, msg| %>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
+          <% end %>
+          <nav>
+            <ul class="nav pull-right">
+              <li><%= link_to "Home", root_path%></li>
+              <li><%= link_to "Help", help_path %></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
