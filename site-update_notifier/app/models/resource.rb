@@ -1,4 +1,4 @@
 class Resource < ActiveRecord::Base
-
-	belongs_to :user
+  # link with user
+  belongs_to :user
 end
