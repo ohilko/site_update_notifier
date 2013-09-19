@@ -1,0 +1,21 @@
+  <p>
+    <h1>User Profile</h1>
+  </p>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <p>
+          <strong>Name:</strong>
+          <%= current_user.name %>
+        </p>
+        <p>
+          <strong>Provider:</strong>
+          <%= current_user.provider %>
+        </p>
+        <p>
+          <strong>OmniAuth UID:</strong>
+          <%= current_user.uid %>
+        </p>
+      </section>
+    </aside>
+  </div>
