@@ -5,6 +5,7 @@
         <ul class="nav pull-right">
           <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "Help", help_path %></li>
+          <li><%= link_to "Log out", logout_path %></li>
           <% if current_user %>
             <li id="fat-menu" class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="/">
