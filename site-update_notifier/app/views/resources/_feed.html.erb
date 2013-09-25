@@ -1,0 +1,6 @@
+<% if @feed_items.any? %>
+  <table class="resources" summary="Status feed">
+    <%= render :partial => 'resources/feed_item', :collection => @feed_items %>
+  </table>
+  <%= will_paginate @feed_items %>
+<% end %>

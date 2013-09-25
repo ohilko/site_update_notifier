@@ -4,6 +4,8 @@ class CreateResources < ActiveRecord::Migration
       t.string :url
       t.string :name
       t.integer :user_id
+      t.integer :timeout
+      t.timestamps :timestamps
 
       t.timestamps
     end

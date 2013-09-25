@@ -1,4 +1,6 @@
 SiteUpdateNotifier::Application.routes.draw do
+  resources :relationships
+
   root to: 'static_pages#home'
 
   match '/help',    to: 'static_pages#help', via: [:get, :post]
@@ -13,6 +15,7 @@ SiteUpdateNotifier::Application.routes.draw do
   resources :identities
   resources :microposts
   resources :users
+  resources :resources
 
 end
 

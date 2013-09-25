@@ -6,6 +6,7 @@
 #  url        :string(255)
 #  name       :string(255)
 #  user_id    :integer
+#  timeout    :integer
 #  created_at :datetime
 #  updated_at :datetime
 #

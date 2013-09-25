@@ -1,7 +1,7 @@
-<li>
-  <span class="url"><%= resource.url %></span>
-  <span class="name"><%= resource.name %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(resource.created_at) %> ago.
-  </span>
-</li>
+<tr>
+  <td class="resource">
+  	<span class="name"><%= resource.name %></span>
+    <span class="url"><%= resource.url %></span>
+  </td>
+  <% user = resource.user rescue User.find(resource.user_id) %>
+</tr>

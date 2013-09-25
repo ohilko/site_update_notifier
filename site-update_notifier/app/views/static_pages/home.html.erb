@@ -1,6 +1,6 @@
 <% provide(:title, 'Home') %>
 <% if current_user %>
-  <%= render 'sessions/userdata' %> 
+  <%= render 'sessions/info' %> 
 <% else %>
-  <a href="sessions/new" class="auth_provider"> NEW USER </a>
+  <%= render 'sessions/new' %> 
 <% end %>
