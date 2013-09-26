@@ -1,0 +1,19 @@
+<H1>User information</H1>
+<div class="user_info" margin=30px>
+  <strong>Name:</strong> <%= @user.name %><br/>
+  <strong>Email:</strong>  <%= @user.email %> <br/>
+  <strong>Resources:</strong> <%= @user.resources.count %><br/>
+
+</div>
+
+<div class="user_info">
+  <strong>Name:</strong> <%= @user.name %><br/>
+  <strong>Email:</strong>  <%= @user.email %> <br/>
+  <strong>Resources:</strong> <%= @user.resources.count %><br/>
+
+</div>
+
+<% if @user.resources.any? %>
+  <%= render @resources %>
+<% end %>
+

@@ -11,21 +11,11 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= label_tag :name %><br>
-    <%= text_field_tag :name, @user.try(:name) %>
-  </div>
-  <div class="field">
-    <%= label_tag :email %><br>
-    <%= text_field_tag :email, @user.try(:email) %>
-  </div>
-  <div class="field">
-    <%= label_tag :password %><br>
-    <%= password_field_tag :password %>
-  </div>
-  <div class="field">
-    <%= label_tag :password_confirmation %><br>
-    <%= password_field_tag :password_confirmation %>
-  </div>
-  <div class="actions"><%= submit_tag "Register" %></div>
+  <%= form_for(@user) do |f| %>
+    <%= render 'fields', :f => f %>
+      <div class="actions">
+        <%= f.submit "Register" %>
+      </div>  
+    <% end %>
 <% end %>
+

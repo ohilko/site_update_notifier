@@ -1,7 +1,4 @@
-<tr>
-  <td class="resource">
-  	<span class="name"><%= resource.name %></span>
-    <span class="url"><%= resource.url %></span>
-  </td>
-  <% user = resource.user rescue User.find(resource.user_id) %>
-</tr>
+<div class="user_info">
+  <span class="name"><%= resource.name %></span>
+  <span class="url"><%= resource.url %></span>
+</div>
