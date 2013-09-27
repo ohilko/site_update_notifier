@@ -1,0 +1,8 @@
+<h1>Information about <%= @user.name %></h1>
+<div class="user_info">
+  <h4>Common information:</h4>
+  <strong>Email:</strong>  <%= @user.email %> <br/><br/>
+  <strong>Count resources:</strong> <%= @user.resources.count %><br/>
+</div>
+
+<%= render 'resources/resources_show'%>

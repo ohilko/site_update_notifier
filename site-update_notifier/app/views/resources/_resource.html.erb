@@ -1,4 +1,6 @@
-<div class="user_info">
-  <span class="name"><%= resource.name %></span>
-  <span class="url"><%= resource.url %></span>
-</div>
+<ul>
+  <li>
+    <a href="<%= resource.url %>"><%= resource.name %></a>
+    <strong><%= resource.timeout %></strong>
+  </li>
+</ul>

@@ -1,11 +1,12 @@
-<table class="front" summary="For signed-in users">
+<div class="user_info">
   <tr>
-    <td class="main">
-      <h1 class="resource">Resources</h1>
-      <%= render 'resources/resource_form' %>
-      <%= render 'resources/feed' %>
-    </td> 
-    <td class="sidebar round">
-      <%= render 'sessions/userdata' %>
-  </tr>
-</table>
+  	<p>
+  		You are sign in! Information about user 
+  		<span class="user_name">
+        	<%= current_user.name %>
+        </span>
+  	</p>
+  	<a href="<%= user_path(current_user) %>">
+  	  here.
+  	</a>
+</div>

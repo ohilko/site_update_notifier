@@ -1,0 +1,8 @@
+<div class="user_info_resources">
+  <h4>Resources:
+    <%= link_to "Add", new_resource_path %>
+  </h4>
+  <% if @user.resources.any? %>
+    <%= render @resources %>
+  <% end %>
+</div>
