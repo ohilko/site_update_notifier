@@ -2,6 +2,7 @@
   <h4>Resources:
     <%= link_to "Add", new_resource_path %>
   </h4>
+  
   <% if @user.resources.any? %>
     <%= render @resources %>
   <% end %>

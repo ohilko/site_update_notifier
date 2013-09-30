@@ -1,8 +1,9 @@
 <% if current_user %>
   <%= render 'sessions/userdata' %>
 <% else %>
-  <h1>Sign In</h1>
-
+  <h1 class="title_info">Sign In</h1>
+  
+  <div class="login_info">
   <p><strong>Sign in through one of these services:</strong></p>
 
   <div class="auth_providers">
@@ -16,16 +17,17 @@
     <strong>Don't use these services?</strong>
     <%= link_to "Create an account", new_identity_path %> or login below.
   </p>
+  </div>
   
   <%= form_tag "/auth/identity/callback" do %>
+  <div class="login_field">
     <div class="field">
       <%= label_tag :auth_key, "Email" %><br>
       <%= text_field_tag :auth_key %>
-    </div>
-    <div class="field">
       <%= label_tag :password %><br>
       <%= password_field_tag :password %>
     </div>
     <div class="actions"><%= submit_tag "Login" %></div>
+  </div>
   <% end %>
 <% end %>

@@ -1,12 +1,7 @@
-<div class="user_info">
-  <tr>
-  	<p>
-  		You are sign in! Information about user 
-  		<span class="user_name">
-        	<%= current_user.name %>
-        </span>
-  	</p>
-  	<a href="<%= user_path(current_user) %>">
-  	  here.
-  	</a>
+<h1 class="title_info">Hello, <%= current_user.name %>!</h1>
+<div class="home_user_sign_in">
+  <p>
+  	You are sign in! Your page with inforamtion about you 
+    <a href="<%= user_path(current_user) %>"> here. </a>
+  </p>  
 </div>

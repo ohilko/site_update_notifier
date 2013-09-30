@@ -1,13 +1,17 @@
 @import "bootstrap";
 
 /* universal */
+$grayMediumLight: #eaeaea;
 
-html {
-  overflow-y: scroll;
+@mixin display_block {
+  display: inline-block;
+  vertical-align: top;
 }
 
-body {
-  padding-top: 60px;
+html, body {
+  margin:0;
+  padding:0;
+  height:100%;
 }
 
 section {
@@ -18,13 +22,30 @@ textarea {
   resize: vertical;
 }
 
-.main {  
-  min-height: 100%; 
+.main {
+  margin:0;
+  padding:0;
+  min-height: 100%;
 }
 
 .hFooter { 
   clear: both;
   height: 40px; 
+}
+
+.user_info, .user_info_resources, .home_user_sign_in, 
+.static_info, .resource_field, .login_field, .login_info {
+  margin-left: 20%;
+  @include display_block;
+}
+
+.resource_name {
+  @include display_block;
+}
+
+.resource_timeout {
+  @include display_block;
+  margin-left: 3%;
 }
 
 .center {
@@ -34,16 +55,10 @@ textarea {
   }
 }
 
-.user_info {
-  display: inline-block;
-  vertical-align: top;
+.footer_info {
+  margin-right: 5%;
 }
 
-.user_info_resources {
-  display: inline-block;
-  margin-left: 20%;
-  vertical-align: top;
-}
 
 /* typography */
 
@@ -52,10 +67,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
+  margin: 0;
   font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
+}
+
+h1.title_info {
+  padding-top: 60px;
 }
 
 h2 {

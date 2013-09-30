@@ -1,6 +1,14 @@
 <ul>
   <li>
-    <a href="<%= resource.url %>"><%= resource.name %></a>
-    <strong><%= resource.timeout %></strong>
+  	<div class="resource_name">
+    	<a href="<%= resource.url %>"><%= resource.name %></a>
+    </div>
+    <div class="resource_timeout">
+    	<strong><%= resource.timeout %></strong>
+    </div>
+
+    <div class="resource_timeout">
+    	<%= link_to 'Edit', edit_resource_path %>
+    </div>
   </li>
 </ul>
