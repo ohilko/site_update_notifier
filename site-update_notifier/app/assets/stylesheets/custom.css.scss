@@ -34,7 +34,7 @@ textarea {
 }
 
 .user_info, .user_info_resources, .home_user_sign_in, 
-.static_info, .resource_field, .login_field, .login_info {
+.static_info, .resource_field, .login_field, .login_info, .new_user_login {
   margin-left: 20%;
   @include display_block;
 }
