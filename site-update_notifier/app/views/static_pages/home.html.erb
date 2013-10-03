@@ -1,5 +1,6 @@
 <% provide(:title, 'Home') %>
 <% if current_user %>
+  
   <%= render 'sessions/info' %> 
 <% else %>
   <%= render 'sessions/new' %> 
