@@ -40,6 +40,8 @@ gem 'rspec-rails'
 
 gem 'capybara'
 
+gem 'omniauth-oauth2', "~> 1.0.2"
+
 gem 'omniauth-google-oauth2'
 
 gem 'omniauth-identity'
@@ -52,6 +54,8 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'gravatar_image_tag'
 
 gem 'will_paginate'
+
+gem 'httparty'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
