@@ -3,6 +3,8 @@ class ResourcesController < ApplicationController
 
   def create
   	@resource = current_user.resources.build(resource_params)
+    UserMailer.welcome_email(current_user).deliver
+    
   	if @resource.save
   	  redirect_to root_path, :flash => { :success => "Resource created!"}
     else

@@ -4,31 +4,34 @@
   <h1 class="title_info">Sign In</h1>
   
   <div class="login_info">
-  <p><strong>Sign in through one of these services:</strong></p>
+    <p><strong>You can sign in our website using the following features:</strong></p>
+    <ul class='login'>
+      <li>
+        Through your account in <strong><a href="/auth/google_oauth2">Google</a></strong>
+      </li>
 
-  <div class="auth_providers">
-    <a href="/auth/google_oauth2" class="auth_provider">
-      <%= image_tag "google_apps_64.png", size: "64x64", alt: "Google" %>
-      Google
-    </a>
-  </div>
-  
-  <p>
-    <strong>Don't use these services?</strong>
-    <%= link_to "Create an account", new_identity_path %> or login below.
-  </p>
-  </div>
-  
-  <%= form_tag "/auth/identity/callback" do %>
-  <div class="login_field">
-    <div class="field">
-      <%= label_tag :auth_key, "Email" %><br>
-      <%= text_field_tag :auth_key %>
-      <%= label_tag :password %><br>
-      <%= password_field_tag :password %>
+      <li>
+        Through our website if you are registered:
+        <%= form_tag "/auth/identity/callback" do %>
+          <div class="login_field">
+            <div class="field">
+              <br>
+              <%= label_tag :auth_key, "Email" %>
+              <%= text_field_tag :auth_key %>
 
-    </div>
-    <div class="actions"><%= submit_tag "Login" %></div>
+              <%= label_tag :password %>
+              <%= password_field_tag :password %>
+            </div>
+            <div class="actions"><%= submit_tag "Login" %></div>
+          </div>
+        <% end %>
+      </li>
+
+      <li>
+        Or <strong><%= link_to "create an account", new_identity_path %></strong> using our website:
+      </li>
+
+    </ul>
   </div>
-  <% end %>
+
 <% end %>

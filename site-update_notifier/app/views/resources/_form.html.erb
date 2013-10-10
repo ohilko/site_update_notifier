@@ -1,13 +1,14 @@
 <%= form_for Resource.new do |f| %>
 <%= render 'sessions/error_messages', :object => f.object %>
+
   <div class="field">
-  	<%= f.label :name %>:
+  	<%= f.label :name %>
     <%= f.text_field :name %>
 
-    <%= f.label :url %>:
+    <%= f.label :url %>
     <%= f.text_field :url %>
 
-    <%= f.label :timeout %>:
+    <%= f.label :timeout %>
     <%= f.number_field :timeout %>
   </div>
   <div class="actions">

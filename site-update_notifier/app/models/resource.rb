@@ -17,6 +17,10 @@ class Resource < ActiveRecord::Base
 
   scope :from_users_followed_by, lambda {|user| followed_by(user)}
 
+  validates_presence_of :url
+  validates_presence_of :name
+  validates_presence_of :timeout
+
   private
     def self.followed_by(user)
     	following_ids = %(SELECT followed_id FROM relationships

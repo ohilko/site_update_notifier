@@ -1,8 +1,9 @@
 <%= form_for Resource.new do |f| %>
-<%= render 'sessions/error_messages', :object => f.object %>
-<h1 class="title_info"> Add new resource</h1>
-<div class="resource_field">
-  <%= render 'form' %>
-  <a href="<%= user_path(current_user) %>"> Back </a>
-</div>
+  <%= render 'sessions/error_messages', :object => f.object %>
+  <h1 class="title_info"> Add new resource</h1>
+  <div class="resource_field">
+
+    <%= render 'form' %>
+  	<a href="<%= user_path(current_user) %>"> Back </a>
+  </div>
 <% end %>

@@ -8,7 +8,14 @@ $grayMediumLight: #eaeaea;
   vertical-align: top;
 }
 
-html, body {
+html {
+  margin:0;
+  padding:0;
+  height:100%;
+}
+
+body {
+  background: url('/assets/images/google_apps_64.png');
   margin:0;
   padding:0;
   height:100%;
@@ -34,9 +41,17 @@ textarea {
 }
 
 .user_info, .user_info_resources, .home_user_sign_in, 
-.static_info, .resource_field, .login_field, .login_info, .new_user_login {
+.static_info, .resource_field, .login_info, .new_user_login {
   margin-left: 20%;
   @include display_block;
+}
+
+.login_field {
+  @include display_block;
+}
+
+.field {
+  font-size: 30px;
 }
 
 .resource_name {
@@ -172,4 +187,5 @@ aside {
 
 ul {
   list-style: disc outside none;
+  font-size: 14px;
 }
