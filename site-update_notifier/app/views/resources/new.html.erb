@@ -1,9 +1,23 @@
-<%= form_for Resource.new do |f| %>
+<%= form_for @resource do |f| %>
   <%= render 'sessions/error_messages', :object => f.object %>
   <h1 class="title_info"> Add new resource</h1>
   <div class="resource_field">
 
-    <%= render 'form' %>
+    <%= render 'sessions/error_messages', :object => f.object %>
+
+  <div class="field">
+  	<%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+
+    <%= f.label :timeout %>
+    <%= f.number_field :timeout %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
   	<a href="<%= user_path(current_user) %>"> Back </a>
   </div>
 <% end %>

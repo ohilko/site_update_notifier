@@ -1,6 +1,10 @@
 class ResourcesController < ApplicationController
   before_filter :authorized_user, :only => :destroy
 
+  def new
+    @resourse = Resourse.new
+  end
+  
   def create
   	@resource = current_user.resources.build(resource_params)
     UserMailer.welcome_email(current_user).deliver

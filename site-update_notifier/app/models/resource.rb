@@ -20,7 +20,7 @@ class Resource < ActiveRecord::Base
   validates_presence_of :url
   validates_presence_of :name
   validates_presence_of :timeout
-
+  
   private
     def self.followed_by(user)
     	following_ids = %(SELECT followed_id FROM relationships
