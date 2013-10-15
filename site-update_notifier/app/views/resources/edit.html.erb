@@ -1,4 +1,6 @@
-<h1 class="title_info">Editing resource</h1>
+<h1>Editing resource</h1>
 
 <%= render 'form' %>
-<a href="<%= user_path(current_user) %>"> Back </a>
+
+<%= link_to 'Show', @resource %> |
+<%= link_to 'Back', resources_path %>

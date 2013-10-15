@@ -1,15 +1,35 @@
-<%= form_for @resource do |f| %>
-<%= render 'sessions/error_messages', :object => f.object %>
+<%= form_for(@resource) do |f| %>
+  <% if @resource.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
+
+      <ul>
+      <% @resource.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <div class="field">
-  	<%= f.label :name %>
-    <%= f.text_field :name %>
-
-    <%= f.label :url %>
+    <%= f.label :url %><br>
     <%= f.text_field :url %>
-
-    <%= f.label :timeout %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :timeout %><br>
     <%= f.number_field :timeout %>
+  </div>
+  <div class="field">
+    <%= f.label :change %><br>
+    <%= f.check_box :change %>
   </div>
   <div class="actions">
     <%= f.submit %>

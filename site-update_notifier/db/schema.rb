@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20130925025611) do
     t.integer  "timeout"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "change"
   end
 
   add_index "resources", ["user_id", "created_at"], name: "index_resources_on_user_id_and_created_at"

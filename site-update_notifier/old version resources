@@ -1,0 +1,136 @@
+class ResourcesController < ApplicationController
+  before_filter :authorized_user, :only => :destroy
+
+  # def new
+  #   @resourse = Resourse.new
+  # end
+  
+  def create
+  	@resource = current_user.resources.build(resource_params)
+    UserMailer.welcome_email(current_user).deliver
+    
+  	if @resource.save
+  	  redirect_to root_path, :flash => { :success => "Resource created!"}
+    else
+      @feed_items = []
+      render '/'
+    end
+  end
+
+  def destroy
+    @resource.destroy
+    redirect_to root_path, :flash => { :success => "Resource deleted!" }
+  end
+  
+  private
+  
+    def authorized_user
+      @resource = current_user.resources.find_by_id(params[:id])
+      redirect_to root_path if @resource.nil?
+    end
+
+    def resource_params
+      params.require(:resource).permit(:name, :url, :timeout)
+    end
+end
+=========================================================================================
+# == Schema Information
+#
+# Table name: resources
+#
+#  id         :integer          not null, primary key
+#  url        :string(255)
+#  name       :string(255)
+#  user_id    :integer
+#  timeout    :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+class Resource < ActiveRecord::Base
+  # link with user
+  belongs_to :user
+
+  scope :from_users_followed_by, lambda {|user| followed_by(user)}
+
+  validates_presence_of :url
+  validates_presence_of :name
+  validates_presence_of :timeout
+  
+  private
+    def self.followed_by(user)
+    	following_ids = %(SELECT followed_id FROM relationships
+                          WHERE follower_id = :user_id)
+      where("user_id IN (#{following_ids}) OR user_id = :user_id",
+            :user_id => user)
+    	
+    end
+end
+=======================================================================
+EDIT
+<h1 class="title_info">Editing resource</h1>
+
+<%= render 'form' %>
+<a href="<%= user_path(current_user) %>"> Back </a>
+====================================================================
+NEW
+<%= form_for Resource.new do |f| %>
+  <%= render 'sessions/error_messages', :object => f.object %>
+  <h1 class="title_info"> Add new resource</h1>
+  <div class="resource_field">
+
+    <%= render 'sessions/error_messages', :object => f.object %>
+
+  <div class="field">
+  	<%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+
+    <%= f.label :timeout %>
+    <%= f.number_field :timeout %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  	<a href="<%= user_path(current_user) %>"> Back </a>
+  </div>
+<% end %>
+=======================================
+SHOW
+=-============================================
+class CreateResources < ActiveRecord::Migration
+  def change
+    create_table :resources do |t|
+      t.string :url
+      t.string :name
+      t.integer :user_id
+      t.integer :timeout
+      t.timestamps :timestamps
+      t.boolean :change
+
+      t.timestamps
+    end
+    add_index :resources, [:user_id, :created_at]
+  end
+end
+======================
+FORM
+<%= form_for Resource.new do |f| %>
+<%= render 'sessions/error_messages', :object => f.object %>
+
+  <div class="field">
+  	<%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+
+    <%= f.label :timeout %>
+    <%= f.number_field :timeout %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
