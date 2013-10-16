@@ -1,5 +1,6 @@
 class ResourcesController < ApplicationController
   before_action :set_resource, only: [:show, :edit, :update, :destroy]
+  before_filter :authorized_user, :only => :destroy
 
   # GET /resources
   # GET /resources.json
@@ -24,7 +25,8 @@ class ResourcesController < ApplicationController
   # POST /resources
   # POST /resources.json
   def create
-    @resource = Resource.new(resource_params)
+    @resource = current_user.resources.build(resource_params)
+    # Resource.new(resource_params)
 
     respond_to do |format|
       if @resource.save
@@ -62,6 +64,12 @@ class ResourcesController < ApplicationController
   end
 
   private
+  
+    def authorized_user
+      @resource = current_user.resources.find_by_id(params[:id])
+      redirect_to root_path if @resource.nil?
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_resource
       @resource = Resource.find(params[:id])
