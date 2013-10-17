@@ -1,14 +1,14 @@
-<ul>
-  <li>
-  	<div class="resource_name">
-    	<a href="<%= resource.url %>"><%= resource.name %></a>
-    </div>
-    <div class="resource_timeout">
-    	<strong><%= resource.timeout %></strong>
-    </div>
-
-    <div class="resource_timeout">
-    	<%= link_to 'Edit', edit_resource_path(resource) %>
-    </div>
-  </li>
-</ul>
+<tr>
+  <td>
+    <a href="<%= resource.url %>"><%= resource.name %></a>
+  </td>
+  <td>
+    <%= resource.timeout %>
+  </td>
+  <td>
+    <%= link_to 'Edit', edit_resource_path(resource) %>
+  </td>
+  <td>
+    <%= link_to 'Destroy', resource, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </td>
+</tr>

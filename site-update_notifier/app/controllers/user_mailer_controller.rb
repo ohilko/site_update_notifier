@@ -1,15 +1,7 @@
-class UserMailerController < ApplicationController
-	def sendmail
-      email = @params["email"]
-	  recipient = email["recipient"]
-	  subject = email["subject"]
-	  message = email["message"]
-      Emailer.deliver_contact(recipient, subject, message)
-      return if request.xhr?
-      render :text => 'Message sent successfully'
-   end
+class UserMailer < ActionMailer::Base
+  default :from => "a@a.com"
 
-   def index
-      render :file => 'app\views\user_mailer\index.rhtml'
-   end
+  def registration_confirmation(user)
+    mail(:to => user.email, :subject => "Registered")
+  end
 end

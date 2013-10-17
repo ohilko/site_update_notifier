@@ -4,6 +4,14 @@
   </h4>
   
   <% if @user.resources.any? %>
+  <table class="table_resource" border="1" bordercolor="#808080" cellspacing="0" cellpadding="10">
+  	<tr>
+  	  <td><strong>Name of resource</strong></td>
+  	  <td><strong>Period </strong></td>
+  	  <td><strong>Edit resource</strong></td>
+  	  <td><strong>Delete resource</strong></td>
+  	</tr>
     <%= render @resources %>
+  </table>
   <% end %>
 </div>

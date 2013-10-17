@@ -57,6 +57,8 @@ gem 'will_paginate'
 
 gem 'httparty'
 
+gem 'squeel'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
