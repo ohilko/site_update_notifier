@@ -27,7 +27,7 @@ class ResourcesController < ApplicationController
   def create
     @resource = current_user.resources.build(resource_params)
     # Resource.new(resource_params)
-    UserMailer.registration_confirmation(@user).deliver
+    UserMailer.registration_confirmation(current_user).deliver
     respond_to do |format|
       if @resource.save
         format.html { redirect_to @resource, notice: 'Resource was successfully created.' }
@@ -58,7 +58,7 @@ class ResourcesController < ApplicationController
   def destroy
     @resource.destroy
     respond_to do |format|
-      format.html { redirect_to resources_url }
+      format.html { redirect_to root_path }
       format.json { head :no_content }
     end
   end
