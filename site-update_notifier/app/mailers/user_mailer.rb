@@ -5,13 +5,12 @@ class UserMailer < ActionMailer::Base
 
   def registration_confirmation(user)
   	@user = user
-  	@resources = self.change_resources(user)
   	mail to: user.email, subject: "Test"
   end
 
   def notifier_info(user)
   	@user = user
-  	@resources = self.write_resources(user)
+  	@resources = self.write_resources_in_table(user)
   	mail to: user.email, subject: "notifier"
   end
 end

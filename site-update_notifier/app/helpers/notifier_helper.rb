@@ -6,12 +6,12 @@ module NotifierHelper
   end
   
   # list of resources which change
-  def change_resources(user)
+  def resources_of_change(user)
   	user.resources
   end
 
   # write resources in table, it is very easy for use
-  def write_resources(user)
+  def write_resources_in_table(user)
   	resources = Resource.all
   	
   	hash_with_resources = Hash.new
@@ -37,8 +37,6 @@ module NotifierHelper
   	hash_with_resources[:date_next_check] = list_with_data_next_check
 
     hash_with_resources
-    # date next check this resource
-  	# date_next_check = Time.now + resource.timeout * 60
   end
 
 
