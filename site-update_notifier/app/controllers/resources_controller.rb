@@ -1,5 +1,5 @@
 class ResourcesController < ApplicationController
-  # include NotifierHelper
+  include NotifierHelper
   before_action :set_resource, only: [:show, :edit, :update, :destroy]
   before_filter :authorized_user, :only => :destroy
 
@@ -28,10 +28,14 @@ class ResourcesController < ApplicationController
   def create
     @resource = current_user.resources.build(resource_params)
     # Resource.new(resource_params)
-    UserMailer.notifier_info(current_user).deliver
+    write_resources_in_table(current_user)
+
     respond_to do |format|
       if @resource.save
-        NotifierHelper.add_resource_in_table(@resource)
+        
+        add_resource_in_table(@resource)
+        # Notifier.delay.send_email(current_user)
+        
         format.html { redirect_to @resource, notice: 'Resource was successfully created.' }
         format.json { render action: 'show', status: :created, location: @resource }
       else

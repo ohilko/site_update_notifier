@@ -1,11 +1,18 @@
-module NotifierHelper
-  @@hash_with_resources = Hash.new 
+class Notifier < ActiveRecord::Base
+	@@hash_with_resources = Hash.new 
 
+
+  def self.when_to_run
+    1.minutes.from_now
+  end
+  
   # send email all users about changer resources 
   def send_email(user)
   	UserMailer.notifier_info(user, @@hash_with_resources).deliver
   end
-  
+
+  handle_asynchronously :send_email, :run_at => Proc.new { when_to_run }
+
   # list of resources which change
   def resources_of_change(user)
   	user.resources
@@ -47,6 +54,4 @@ module NotifierHelper
 
     @@hash_with_resources
   end
-
-
 end
