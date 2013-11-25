@@ -6,5 +6,7 @@ handler do |job|
   
 end
 
-every(5.seconds, 'hello.job')
-every(10.seconds, 'less.frequent.job')
+
+every(30.seconds, 'notifier.run') {
+	p 'Olga'
+}
