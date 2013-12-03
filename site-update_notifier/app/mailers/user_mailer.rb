@@ -14,4 +14,8 @@ class UserMailer < ActionMailer::Base
   	@resources = hash_with_resources
     mail to: user.email, subject: "notifier"
   end
+
+  def my_print
+    puts 'Work'
+  end
 end

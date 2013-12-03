@@ -1,4 +1,8 @@
 require 'httparty'
+require 'date'
+require 'clockwork'
+
+include Clockwork
 
 class Notifier < ActiveRecord::Base
 
@@ -6,21 +10,32 @@ class Notifier < ActiveRecord::Base
     p 'Hello, world!!!'
   end
 
-  def self.parser(user, url)
-  	request = HTTParty.get(url)
-
-  	# puts request.body
-  	UserMailer.notifier_info(user, request.body).deliver
-  	puts request.headers.inspect.split('"last-modified"=>["')[1].split('"]')[0]
-  	puts request.headers.inspect.split('{')[1].split('}')[0].split(', ')
-  	massiv_headers[0].split('"accept-ranges"=>[')
-
-  	# massiv_headers = request.headers.inspect.split('{')[1].split('}')[0].split('], ')
- 	# for el in massiv_headers
-	#   if el.split('"last-modified"=>[').length == 2 then
-	#     puts 'Hello!!!!!'
-	#   end
-	# end
+  def self.parser(user, resource)
+  	# UserMailer.notifier_info(user, request.body).deliver
+  	get_time_last_modifier(resource.url)
+	
+	# puts 'Hello' if DateTime.parse(t) < DateTime.parse('12/03/2013')
 
   end
+
+
+  def self.get_time_last_modifier(url)
+  	request = HTTParty.get(url)
+
+  	time_last_modifier = nil
+  	massiv_headers = request.headers.inspect.split('{')[1].split('}')[0].split('], ')
+ 	for el in massiv_headers
+	  if el.split('"last-modified"=>[').length == 2 then
+	    time_last_modifier = el.split('"last-modified"=>[')[1]
+	    break
+	  end
+	end
+
+	time_last_modifier
+  end
+
+  def self.set_time
+  	15
+  end
+
 end

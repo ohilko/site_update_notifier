@@ -32,7 +32,7 @@ class ResourcesController < ApplicationController
     respond_to do |format|
       if @resource.save
 
-        Notifier.parser(current_user, @resource.url)
+        Notifier.parser(current_user, @resource)
         format.html { redirect_to @resource, notice: 'Resource was successfully created.' }
         format.json { render action: 'show', status: :created, location: @resource }
       else

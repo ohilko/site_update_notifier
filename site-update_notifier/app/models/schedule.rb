@@ -2,15 +2,20 @@ require 'clockwork'
 require 'whenever'
 
 include Clockwork
-include Notifier
+
+time = 10
 
 handler do |job|
   puts "Running #{job}"
-  
 end
 
-time = Notifier.set_time 
+def self.set_time
+	# Notifier.set_time
+	15
+end
+
+time = self.set_time
 
 every(time.seconds, 'notifier.run') {
-	puts "UserMailer.my_print"
+	puts "Good"
 }
