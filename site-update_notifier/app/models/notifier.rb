@@ -4,7 +4,7 @@ require 'clockwork'
 
 include Clockwork
 
-class Notifier < ActiveRecord::Base
+class Notifier 
 
   def run
     p 'Hello, world!!!'
@@ -12,10 +12,10 @@ class Notifier < ActiveRecord::Base
 
   def self.parser(user, resource)
   	# UserMailer.notifier_info(user, request.body).deliver
-  	get_time_last_modifier(resource.url)
-	
-	# puts 'Hello' if DateTime.parse(t) < DateTime.parse('12/03/2013')
-
+  	# get_time_last_modifier(resource.url)
+	  UserMailer.notifier_info(user, get_time_last_modifier(resource.url)).deliver
+	  # puts 'Hello' if DateTime.parse(t) < DateTime.parse('12/03/2013')
+  
   end
 
 
@@ -24,18 +24,16 @@ class Notifier < ActiveRecord::Base
 
   	time_last_modifier = nil
   	massiv_headers = request.headers.inspect.split('{')[1].split('}')[0].split('], ')
- 	for el in massiv_headers
-	  if el.split('"last-modified"=>[').length == 2 then
-	    time_last_modifier = el.split('"last-modified"=>[')[1]
-	    break
+ 	  for el in massiv_headers
+	    if el.split('"last-modified"=>[').length == 2 then
+	      time_last_modifier = el.split('"last-modified"=>[')[1]
+	      break
+	    end
 	  end
-	end
 
-	time_last_modifier
-  end
+	  time_last_modifier
 
-  def self.set_time
-  	15
   end
 
 end
+
