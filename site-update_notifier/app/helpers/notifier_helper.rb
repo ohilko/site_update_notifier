@@ -1,5 +1,9 @@
+require 'rubygems' 
+require 'bundler' 
+Bundler.setup(:default, :ci)
+
 require 'clockwork'
-# require '/home/ohilko/Work_ruby/site_update_notifier/site-update_notifier/app/models/resource.rb'
+require '/home/ohilko/Work_ruby/site_update_notifier/site-update_notifier/app/models/resource.rb'
 
 include Clockwork
 
@@ -85,11 +89,11 @@ module NotifierHelper
   end
 end
 
-# hash_with_resources = NotifierHelper.set_information_about_resources
+hash_with_resources = NotifierHelper.set_information_about_resources
 
-# list = hash_with_resources[:timeout]
+list = hash_with_resources[:timeout]
 
-list = [15, 20, 10]
+# list = [15, 20, 10]
 list.each do |element|
   every(element.seconds, 'notifier.run') {
     puts "Good - ", element
