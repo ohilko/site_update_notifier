@@ -1,5 +1,5 @@
-require 'rubygems' 
-require 'bundler' 
+require 'rubygems'
+require 'bundler'
 Bundler.setup(:default, :ci)
 
 require 'clockwork'
@@ -14,12 +14,12 @@ module NotifierHelper
   # def send_email(user)
   # 	UserMailer.notifier_info(user, @@hash_with_resources).deliver
   # end
-  
+
   # # list of resources which change
   # def resources_of_change(user)
   # 	user.resources
   # end
-  
+
   # # add new resource in table, which must to have information about all resources
   # def add_resource_in_table(resource)
   # 	@@hash_with_resources[:name].push(resource.name)
@@ -33,7 +33,7 @@ module NotifierHelper
   # def write_resources_in_table(user)
   # 	resources = Resource.all
 
-    
+
   # 	list_with_name = Array.new
   # 	list_with_url = Array.new
   # 	list_with_timeout = Array.new
@@ -61,7 +61,7 @@ module NotifierHelper
     hash_with_resources = Hash.new
     resources = Resource.all
 
-    
+
     list_with_name = Array.new
     list_with_url = Array.new
     list_with_timeout = Array.new

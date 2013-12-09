@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Rails site-update_notifier: development" uuid="a5c29f34-f39e-4d7e-8ad5-2c3897922d12">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails site-update_notifier: test" uuid="1a7ebf41-d3c3-4930-87d9-e658325b0315">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>
