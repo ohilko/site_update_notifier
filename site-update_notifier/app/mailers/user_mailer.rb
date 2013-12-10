@@ -1,5 +1,4 @@
 class UserMailer < ActionMailer::Base
-  include NotifierHelper
 
   default :from => "from@example.com"
 

@@ -1,5 +1,4 @@
 class ResourcesController < ApplicationController
-  include NotifierHelper
 
   before_action :set_resource, only: [:show, :edit, :update, :destroy]
   before_filter :authorized_user, :only => :destroy

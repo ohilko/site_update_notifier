@@ -7,8 +7,6 @@ class Resource < ActiveRecord::Base
   validates_presence_of :url
   validates_presence_of :name
   validates_presence_of :timeout
-  
-  include NotifierHelper
 
   private
 
