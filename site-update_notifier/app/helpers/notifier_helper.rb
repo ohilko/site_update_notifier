@@ -1,28 +1,11 @@
-require 'rubygems'
-require 'bundler'
+require 'rubygems' 
+require 'bundler' 
 Bundler.setup(:default, :ci)
-require 'active_record'
 
-require File.expand_path('../../app/models/resource', __FILE__)
 require 'clockwork'
-require 'rails/all'
+require '/home/ohilko/Work_ruby/site_update_notifier/site-update_notifier/app/models/resource.rb'
 
 include Clockwork
-
-ActiveRecord::Base.establish_connection adapter: 'sqlite3', database: ':memory:'
-ActiveRecord::Schema.define do
-  self.verbose = false
-
-  create_table :resources do |t|
-    t.string :url
-    t.string :name
-    t.integer :user_id
-    t.integer :timeout
-    t.boolean :change
-
-    t.timestamps
-  end
-end
 
 module NotifierHelper
   # @@hash_with_resources = Hash.new 
@@ -31,12 +14,12 @@ module NotifierHelper
   # def send_email(user)
   # 	UserMailer.notifier_info(user, @@hash_with_resources).deliver
   # end
-
+  
   # # list of resources which change
   # def resources_of_change(user)
   # 	user.resources
   # end
-
+  
   # # add new resource in table, which must to have information about all resources
   # def add_resource_in_table(resource)
   # 	@@hash_with_resources[:name].push(resource.name)
@@ -50,7 +33,7 @@ module NotifierHelper
   # def write_resources_in_table(user)
   # 	resources = Resource.all
 
-
+    
   # 	list_with_name = Array.new
   # 	list_with_url = Array.new
   # 	list_with_timeout = Array.new
@@ -77,8 +60,8 @@ module NotifierHelper
   def self.set_information_about_resources
     hash_with_resources = Hash.new
     resources = Resource.all
-    puts resources
 
+    
     list_with_name = Array.new
     list_with_url = Array.new
     list_with_timeout = Array.new
@@ -106,15 +89,13 @@ module NotifierHelper
   end
 end
 
-hash_with_resources = Resource.all
-# NotifierHelper.set_information_about_resources
-puts hash_with_resources
+hash_with_resources = NotifierHelper.set_information_about_resources
 
-# list = hash_with_resources[:timeout]
+list = hash_with_resources[:timeout]
 
-list = [15, 20, 10]
+# list = [15, 20, 10]
 list.each do |element|
-  every(10.seconds, 'notifier.run') {
-    puts 'Good - ', element
+  every(element.seconds, 'notifier.run') {
+    puts "Good - ", element
   }
 end
