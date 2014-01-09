@@ -76,8 +76,8 @@ module NotifierHelper
 
   def self.set_information_about_resources
     hash_with_resources = Hash.new
-    resources = Resource.all
-    puts resources
+    resources = Resource.where(name => 'google')
+    # puts resources
 
     list_with_name = Array.new
     list_with_url = Array.new
@@ -106,13 +106,13 @@ module NotifierHelper
   end
 end
 
-hash_with_resources = Resource.all
-# NotifierHelper.set_information_about_resources
+hash_with_resources = Resource.where(name => 'google')
+
 puts hash_with_resources
 
-# list = hash_with_resources[:timeout]
+list = hash_with_resources[:timeout]
 
-list = [15, 20, 10]
+# list = [15, 20, 10]
 list.each do |element|
   every(10.seconds, 'notifier.run') {
     puts 'Good - ', element
