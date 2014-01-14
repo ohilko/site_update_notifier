@@ -12,6 +12,12 @@ ActiveRecord::Base.establish_connection(
   :adapter => "sqlite3",
   :database  => "db/development.sqlite3"
 )
+ActionMailer::Base.smtp_settings = {
+  :address => "127.0.0.1", :port => 1025 
+}
+ActionMailer::Base.raise_delivery_errors = true
+
+ActionMailer::Base.prepend_view_path('./')
 
 require File.expand_path('../../app/models/resource', __FILE__)
 require File.expand_path('../../app/models/user', __FILE__)
@@ -83,6 +89,6 @@ list.each do |element|
       puts '????'
     end
     # puts 'Good - ', element
-    # NotifierHelper.send_email(User.where(:id => 2))
+    NotifierHelper.send_email(User.where(:id => 2))
   }
 end

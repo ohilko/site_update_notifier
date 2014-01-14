@@ -1,5 +1,3 @@
-# require File.expand_path('../../app/views/user_mailer/notifier_info_empty.html.erb', __FILE__)
-
 class UserMailer < ActionMailer::Base
 
   default :from => "from@example.com"
@@ -19,9 +17,7 @@ class UserMailer < ActionMailer::Base
   def notifier_info_empty(user)
     @user = user
 
-    mail(to: "to@example.com", subject: "notifier") do |format|
-      format.html { render user_mailer: 'notifier_info_empty.html.erb'}
-    end
+    mail(to: "to@example.com", subject: "notifier", template_path: 'app/views/user_mailer', template_name: 'notifier_info_empty')
   end
 
   def my_print

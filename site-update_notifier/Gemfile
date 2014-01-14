@@ -59,8 +59,6 @@ gem 'httparty'
 
 gem 'squeel'
 
-gem 'mailcatcher'
-
 gem "letter_opener"
 
 gem 'delayed_job'
