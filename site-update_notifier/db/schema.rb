@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 20131121035321) do
     t.string   "url"
     t.string   "name"
     t.integer  "user_id"
-    t.integer  "timeout"
-    t.boolean  "change"
+    t.integer  "timeout",    default: 60
+    t.boolean  "change",     default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -4,8 +4,8 @@ class CreateResources < ActiveRecord::Migration
       t.string :url
       t.string :name
       t.integer :user_id
-      t.integer :timeout
-      t.boolean :change
+      t.integer :timeout, :default => 60
+      t.boolean :change, :default => false
 
       t.timestamps
     end
