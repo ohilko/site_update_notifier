@@ -52,6 +52,9 @@ module NotifierHelper
 
   def self.check_update(url, user_id, name)
     time_last_modifier = NotifierHelper.get_time_last_modifier(url)
+    date = Date.new(time_last_modifier)
+    time = Time.now
+    puts date
     # puts time_last_modifier
   end
 
