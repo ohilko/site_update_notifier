@@ -27,21 +27,24 @@ require File.expand_path('../../app/mailers/user_mailer', __FILE__)
 
 module NotifierHelper
 
-  def self.get_time_last_modifier(url)
+  def self.get_information_about_site(url)
+    result = Hash.new
     request = HTTParty.get(url)
     puts url
 
-    time_last_modifier = nil
     massiv_headers = request.headers.inspect.split('{')[1].split('}')[0].split('], ')
     for el in massiv_headers
       if el.split('"last-modified"=>[').length == 2 then
-        time_last_modifier = el.split('"last-modified"=>[')[1]
-        break
+        result[:last_modified] = el.split('"last-modified"=>[')[1]
+        
+      end
+      if el.split('"etag"=>[').length == 2 then
+        result[:etag] = el.split('"etag"=>[')[1]
+        
       end
     end
-    puts time_last_modifier
-
-    time_last_modifier
+    
+    result
 
   end
 
@@ -51,45 +54,18 @@ module NotifierHelper
   end
 
   def self.check_update(url, user_id, name)
-    time_last_modifier = NotifierHelper.get_time_last_modifier(url)
-    date = DateTime.parse(time_last_modifier)
+    result = NotifierHelper.get_information_about_site(url)
+    if result[:last_modified] == nil then
+      puts 'NIL'
+    else
+      date = DateTime.parse(result[:last_modified])
+      time_now  = DateTime.now
+      puts time_now
 
-    time_now  = DateTime.now
-    puts time_now
-
-    puts date.hour
-    # puts time_last_modifier
+      puts date.hour
+    end  
+    
   end
-
-  # def self.set_information_about_resources
-  #   hash_with_resources = Hash.new
-  #   resources = Resource.all
-
-  #   list_with_name = Array.new
-  #   list_with_url = Array.new
-  #   list_with_timeout = Array.new
-  #   list_with_change = Array.new
-  #   list_with_data_next_check = Array.new
-  #   list_with_user_id = Array.new
-
-  #   resources.each do |resource|
-  #     list_with_name.push(resource.name)
-  #     list_with_url.push(resource.url)
-  #     list_with_timeout.push(resource.timeout)
-  #     list_with_change.push(resource.change)
-  #     list_with_data_next_check.push(Time.now + resource.timeout * 60)
-  #     list_with_user_id.push(resource.user_id)
-  #   end
-
-  #   hash_with_resources[:name] = list_with_name
-  #   hash_with_resources[:url] = list_with_url
-  #   hash_with_resources[:timeout] = list_with_timeout
-  #   hash_with_resources[:change] = list_with_change
-  #   hash_with_resources[:date_next_check] = list_with_data_next_check
-  #   hash_with_resources[:user_id] = list_with_user_id
-
-  #   hash_with_resources
-  # end
 end
 
 resources = Resource.all
