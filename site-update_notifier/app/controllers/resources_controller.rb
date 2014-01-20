@@ -31,7 +31,8 @@ class ResourcesController < ApplicationController
     respond_to do |format|
       if @resource.save
 
-        #NotifierHelper.parser(current_user, @resource)
+        #Notifier.send_email(current_user)
+        p %x!clockwork lib/notifier.rb!
         format.html { redirect_to @resource, notice: 'Resource was successfully created.' }
         format.json { render action: 'show', status: :created, location: @resource }
       else

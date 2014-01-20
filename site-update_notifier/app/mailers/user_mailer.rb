@@ -17,7 +17,7 @@ class UserMailer < ActionMailer::Base
   def notifier_info_empty(user)
     @user = user
 
-    mail(to: "to@example.com", subject: "notifier", template_path: 'app/views/user_mailer', template_name: 'notifier_info_empty')
+    mail(to: user.email, subject: "notifier", template_path: 'app/views/user_mailer', template_name: 'notifier_info_empty')
   end
 
   def my_print
