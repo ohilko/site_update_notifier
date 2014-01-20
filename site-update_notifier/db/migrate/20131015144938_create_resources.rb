@@ -6,6 +6,7 @@ class CreateResources < ActiveRecord::Migration
       t.integer :user_id
       t.integer :timeout, :default => 60
       t.boolean :change, :default => false
+      t.datetime :datelastmodified
 
       t.timestamps
     end

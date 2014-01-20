@@ -35,12 +35,11 @@ module NotifierHelper
     massiv_headers = request.headers.inspect.split('{')[1].split('}')[0].split('], ')
     for el in massiv_headers
       if el.split('"last-modified"=>[').length == 2 then
-        result[:last_modified] = el.split('"last-modified"=>[')[1]
-        
+        result[:last_modified] = el.split('"last-modified"=>[')[1]        
       end
+
       if el.split('"etag"=>[').length == 2 then
-        result[:etag] = el.split('"etag"=>[')[1]
-        
+        result[:etag] = el.split('"etag"=>[')[1]        
       end
     end
     
@@ -55,14 +54,15 @@ module NotifierHelper
 
   def self.check_update(url, user_id, name)
     result = NotifierHelper.get_information_about_site(url)
-    if result[:last_modified] == nil then
-      puts 'NIL'
-    else
-      date = DateTime.parse(result[:last_modified])
-      time_now  = DateTime.now
-      puts time_now
+  
+    if result[:last_modified] != nil then
+      date_last_change = DateTime.parse(result[:last_modified])
+      time_now  = DateTime.parse(Time.now.to_s)
 
-      puts date.hour
+      if date_last_change > time_now
+        puts date_last_change
+      end
+      puts time_now
     end  
     
   end

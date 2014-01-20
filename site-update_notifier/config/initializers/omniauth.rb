@@ -1,5 +1,4 @@
-CLIENT_ID= '144604346759-qdbnp7jva1aiu31jqvi30185hf480d40.apps.googleusercontent.com'
-CLIENT_SECRET= 'mJdvYPgG_s7s8nMX8ZYw6sUP'
+require File.expand_path('../../initializers/google_info', __FILE__)
 
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :google_oauth2, CLIENT_ID, CLIENT_SECRET, {
