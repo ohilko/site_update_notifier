@@ -26,10 +26,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="notifier.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="notifier.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/notifier.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="4" selection-start="1977" selection-end="2008" vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="1515">
+            <state line="35" column="0" selection-start="887" selection-end="887" vertical-scroll-proportion="0.12269939" vertical-offset="405" max-vertical-offset="1515">
               <folding />
             </state>
           </provider>
@@ -53,10 +53,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="resources_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="resources_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/resources_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="28" selection-start="1538" selection-end="1538" vertical-scroll-proportion="0.5368098" vertical-offset="360" max-vertical-offset="1365">
+            <state line="63" column="22" selection-start="1624" selection-end="1624" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="1365">
               <folding />
             </state>
           </provider>
@@ -82,6 +82,7 @@
         <option value="$PROJECT_DIR$/app/mailers/user_mailer.rb" />
         <option value="$PROJECT_DIR$/app/models/notifier.rb" />
         <option value="$PROJECT_DIR$/app/controllers/resources_controller.rb" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -691,13 +692,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/notifier.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="4" selection-start="1977" selection-end="2008" vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="1515">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="0" selection-start="274" selection-end="274" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300">
@@ -714,7 +708,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/resources_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="28" selection-start="1538" selection-end="1538" vertical-scroll-proportion="0.5368098" vertical-offset="360" max-vertical-offset="1365">
+        <state line="63" column="22" selection-start="1624" selection-end="1624" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="1365">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="20" selection-start="499" selection-end="499" vertical-scroll-proportion="0.2760736" vertical-offset="0" max-vertical-offset="978">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/notifier.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="0" selection-start="887" selection-end="887" vertical-scroll-proportion="0.12269939" vertical-offset="405" max-vertical-offset="1515">
           <folding />
         </state>
       </provider>
