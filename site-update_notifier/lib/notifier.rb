@@ -30,7 +30,7 @@ module NotifierHelper
   def self.get_information_about_site(url)
     result = Hash.new
     request = HTTParty.get(url)
-    puts url
+    #puts url
 
     massiv_headers = request.headers.inspect.split('{')[1].split('}')[0].split('], ')
     for el in massiv_headers
@@ -68,12 +68,9 @@ module NotifierHelper
   end
 end
 
-resources = Resource.all
+every(10.seconds, 'Resource with name is ' + 'NAME' + '.') {
+  puts 'Hello'
+  #NotifierHelper.check_update('http://example.com/', 1, Name)
+  # NotifierHelper.send_email(User.where(:id => 2))
+}
 
-resources.each do |resource|
-
-  every(resource.timeout.seconds, 'Resource with name is ' + resource.name + '.') {
-    NotifierHelper.check_update(resource.url, resource.user_id, resource.name)
-    # NotifierHelper.send_email(User.where(:id => 2))
-  }
-end

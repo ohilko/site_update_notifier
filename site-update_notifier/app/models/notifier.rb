@@ -57,7 +57,6 @@ class Notifier
   # send email all users about changer resources
   def self.send_email(user)
     UserMailer.notifier_info_empty(user).deliver
-    `cd ~/Work_ruby`
   end
 
   def self.check_update(url, user_id, name)
@@ -75,21 +74,20 @@ class Notifier
       end
       puts time_now
     end
-    p %x!clockwork lib/notifier.rb!
 
   end
 
 end
 
-resources = Resource.all
+every(1.seconds, 'Main') {
+  resources = Resource.all
+  resources.each do |resource|
 
-resources.each do |resource|
-
-  every(resource.timeout.seconds, 'Resource with name is ' + resource.name + '.') {
-    Notifier.check_update(resource.url, resource.user_id, resource.name)
-    # NotifierHelper.send_email(User.where(:id => 2))
-  }
-end
-
+    every(resource.timeout.seconds, 'Resource with name is ' + resource.name + '.') {
+      Notifier.check_update(resource.url, resource.user_id, resource.name)
+      # NotifierHelper.send_email(User.where(:id => 2))
+    }
+  end
+}
 
 
